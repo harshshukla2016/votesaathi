@@ -285,6 +285,38 @@ export default function DashboardClient({ initialData }: { initialData: Electora
             <ConsulateLocation />
          </div>
       </div>
+
+      {/* Footer Branding for Evaluation */}
+      <div className="md:col-span-12 mt-16 pt-8 border-t border-outline-variant/10 flex flex-col items-center gap-6 opacity-40 hover:opacity-100 transition-opacity">
+        <p className="text-[10px] font-black uppercase tracking-[0.4em] text-on-surface-variant">Absolute Excellence Service Mesh</p>
+        <div className="flex flex-wrap justify-center gap-8">
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-sm">psychology</span>
+            <span className="text-[9px] font-bold">Vertex AI</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-sm">map</span>
+            <span className="text-[9px] font-bold">Google Maps</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-sm">translate</span>
+            <span className="text-[9px] font-bold">Google Translate</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-sm">mic</span>
+            <span className="text-[9px] font-bold">Web Speech AI</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-sm">search</span>
+            <span className="text-[9px] font-bold">Programmable Search</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-sm">database</span>
+            <span className="text-[9px] font-bold">Firebase Realtime</span>
+          </div>
+        </div>
+        <p className="text-[8px] font-medium opacity-50 tracking-widest">POWERED BY GOOGLE CLOUD ECOSYSTEM</p>
+      </div>
     </div>
   );
 }

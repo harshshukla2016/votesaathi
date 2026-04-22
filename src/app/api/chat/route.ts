@@ -1,10 +1,26 @@
 import { google } from '@ai-sdk/google';
 import { streamText } from 'ai';
 
+// Simple Rate Limiter for Hackathon Efficiency
+const rateLimitMap = new Map<string, number>();
+const RATE_LIMIT_MS = 2000; // 2 seconds between requests per IP
+
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
+  const ip = req.headers.get('x-forwarded-for') || 'anonymous';
+  const now = Date.now();
+  const lastRequest = rateLimitMap.get(ip) || 0;
+
+  if (now - lastRequest < RATE_LIMIT_MS) {
+    return new Response(JSON.stringify({ error: "Too many requests. Please wait." }), {
+      status: 429,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+  rateLimitMap.set(ip, now);
+
   const { messages } = await req.json();
 
   // If no API key is set, we'll provide a friendly mock response for the hackathon

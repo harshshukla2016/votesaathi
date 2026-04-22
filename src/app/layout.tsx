@@ -162,13 +162,21 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${inter.variable} ${publicSans.variable} antialiased selection:bg-primary/30 selection:text-primary bg-background text-on-background min-h-screen`}
       >
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-primary focus:text-on-primary focus:rounded-xl focus:font-black focus:shadow-2xl"
+        >
+          Skip to content
+        </a>
         <AuthProvider>
           <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
             <div className="absolute top-0 right-1/4 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] mix-blend-screen transform -translate-y-1/2"></div>
             <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[100px] mix-blend-screen transform translate-y-1/3"></div>
           </div>
           <Navbar />
-          {children}
+          <main id="main-content">
+            {children}
+          </main>
         </AuthProvider>
       </body>
     </html>
