@@ -27,6 +27,7 @@ export default function NotificationHub() {
     }
 
     // Real-time listener for in-app alert history
+    if (!db) return;
     const q = query(collection(db, "consulate_alerts"), orderBy("timestamp", "desc"));
     const unsub = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map(d => ({ id: d.id, ...d.data() })) as ConsulateAlert[];

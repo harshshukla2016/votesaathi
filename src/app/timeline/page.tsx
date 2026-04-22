@@ -72,14 +72,15 @@ export default function Timeline() {
   }, [user, profile]);
 
   const toggleComplete = async (stepId: string) => {
-    if (!user) return;
-    const userRef = doc(db, "users", user.uid);
-    const isCompleted = profile?.completedSteps?.includes(stepId);
+    if (user && db) {
+      const userRef = doc(db, "users", user.uid);
+      const isCompleted = profile?.completedSteps?.includes(stepId);
 
-    await updateDoc(userRef, {
-      completedSteps: isCompleted ? arrayRemove(stepId) : arrayUnion(stepId),
-      points: isCompleted ? (profile.points - 10) : (profile.points + 10)
-    });
+      await updateDoc(userRef, {
+        completedSteps: isCompleted ? arrayRemove(stepId) : arrayUnion(stepId),
+        points: isCompleted ? (profile.points - 10) : (profile.points + 10)
+      });
+    }
   };
 
   const completedCount = profile?.completedSteps?.length || 0;

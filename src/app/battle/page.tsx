@@ -91,6 +91,7 @@ export default function BattleArena() {
     setGameState('searching');
 
     // 1. Try to find a waiting lobby
+    if (!db) return;
     const q = query(collection(db, "battle_lobbies"), where("status", "==", "waiting"), limit(1));
     const snap = await getDocs(q);
 
@@ -102,7 +103,7 @@ export default function BattleArena() {
       currentProgress: 0
     };
 
-    if (!snap.empty) {
+    if (!snap.empty && db) {
       const waitLobby = snap.docs[0];
       const waitData = waitLobby.data() as any;
       await updateDoc(doc(db, "battle_lobbies", waitLobby.id), {
@@ -110,7 +111,7 @@ export default function BattleArena() {
         status: 'active'
       });
       setLobby({ ...waitData, id: waitLobby.id, players: [...waitData.players, currentPlayer], status: 'active' });
-    } else {
+    } else if (db) {
       // 2. Create new lobby
       const newLobby = await addDoc(collection(db, "battle_lobbies"), {
         status: 'waiting',
@@ -121,6 +122,7 @@ export default function BattleArena() {
 
       // 3. Fallback to AI Bot if no one joins in 10s
       setTimeout(async () => {
+        if (!db) return;
         const d = await getDocs(query(collection(db, "battle_lobbies"), where("status", "==", "waiting"), limit(1)));
         if (!d.empty && d.docs[0].id === newLobby.id) {
            const aiPlayer: Player = {
@@ -154,7 +156,9 @@ export default function BattleArena() {
        return p;
     });
 
-    await updateDoc(doc(db, "battle_lobbies", lobby.id), { players: newPlayers });
+    if (db) {
+      await updateDoc(doc(db, "battle_lobbies", lobby.id), { players: newPlayers });
+    }
   };
 
   const handleNextQuestion = async () => {
@@ -162,7 +166,7 @@ export default function BattleArena() {
     
     if (lobby.currentQuestionIndex < battleQuestions.length - 1) {
        // Only the lobby 'creator' (first player) advances the index for sync
-       if (lobby.players[0].userId === user.uid) {
+       if (lobby.players[0].userId === user.uid && db) {
          await updateDoc(doc(db, "battle_lobbies", lobby.id), { 
            currentQuestionIndex: lobby.currentQuestionIndex + 1 
          });
@@ -170,7 +174,7 @@ export default function BattleArena() {
        setCurrentQuestion(battleQuestions[lobby.currentQuestionIndex + 1]);
        setTimeLeft(10);
        setCanAnswer(true);
-    } else {
+    } else if (db) {
        await updateDoc(doc(db, "battle_lobbies", lobby.id), { status: 'finished' });
     }
   };

@@ -40,5 +40,5 @@ export async function POST(req: Request) {
     Refuse to take a side in political debates; provide neutral, data-driven insights instead.`,
   });
 
-  return result.toDataStreamResponse();
+  return (result as any).toAIStreamResponse();
 }

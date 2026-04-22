@@ -1,5 +1,5 @@
 import { google } from "@ai-sdk/google";
-import { vertex } from "@ai-sdk/google-vertex";
+import { createVertex } from "@ai-sdk/google-vertex";
 import { generateText } from "ai";
 import { NextResponse } from "next/server";
 
@@ -28,11 +28,12 @@ export async function GET() {
 
   for (const vModel of vertexModels) {
     try {
+      const vProvider = createVertex({
+        project: "votesaathi-e8265",
+        location: vModel.loc
+      });
       const { text } = await generateText({
-        model: vertex(vModel.id, {
-          project: "votesaathi-e8265",
-          location: vModel.loc
-        }),
+        model: vProvider(vModel.id),
         prompt: "Say 'vertex online'",
       });
       results.push({ provider: "VERTEX_AI", model: vModel.id, status: "SUCCESS", response: text });

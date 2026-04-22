@@ -42,13 +42,15 @@ export default function ReadinessWizard({ uid, onComplete }: { uid: string, onCo
       setStepIndex(prev => prev + 1);
     } else {
       // Finalize in Firestore
-      try {
-        const userRef = doc(db, "users", uid);
-        await updateDoc(userRef, {
-          readiness: newAnswers,
-          readinessCompleted: true
-        });
-      } catch (e) { console.error(e); }
+      if (uid && db) {
+        try {
+          const userRef = doc(db, "users", uid);
+          await updateDoc(userRef, {
+            readiness: newAnswers,
+            readinessCompleted: true
+          });
+        } catch (e) { console.error(e); }
+      }
       
       // Delay slightly for final celebration burst
       setTimeout(() => onComplete(), 1000);

@@ -20,6 +20,10 @@ export default function LeaderboardPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!db) {
+      setLoading(false);
+      return;
+    }
     const q = query(collection(db, "users"), orderBy("points", "desc"), limit(10));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const users: LeaderboardUser[] = snapshot.docs.map(doc => ({

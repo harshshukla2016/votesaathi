@@ -63,6 +63,7 @@ export default function CitizenForum() {
 
     try {
       // 1. Add question to Firestore
+      if (!db) return;
       const docRef = await addDoc(collection(db, "civic_qa"), {
         question: questionText,
         authorName: user.displayName || "Anonymous Citizen",
@@ -79,7 +80,7 @@ export default function CitizenForum() {
       });
       const aiData = await aiRes.json();
 
-      if (aiData.answer) {
+      if (aiData.answer && db) {
         await updateDoc(doc(db, "civic_qa", docRef.id), {
           aiAnswer: aiData.answer,
           aiConfidence: aiData.confidence || "high"
@@ -94,6 +95,7 @@ export default function CitizenForum() {
 
   const upvote = async (id: string) => {
     try {
+      if (!db) return;
       await updateDoc(doc(db, "civic_qa", id), {
         upvotes: increment(1)
       });

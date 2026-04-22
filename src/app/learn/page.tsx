@@ -58,7 +58,7 @@ export default function LearnPage() {
       setQuizIndex(prev => prev + 1);
     } else {
       setQuizFinished(true);
-      if (user) {
+      if (user && db) {
         // Update points and potentially award badge
         const userRef = doc(db, "users", user.uid);
         await updateDoc(userRef, {

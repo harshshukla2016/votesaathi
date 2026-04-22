@@ -142,16 +142,8 @@ export default function SaathiChat() {
         const errData = await res.json();
         if (errData.fallback) {
            const fallbackMsg: Message = {
-             role: 'saathi',
+             role: 'assistant',
              content: "The Consulate's Intelligence Mesh is currently in 'Safe Mode' due to a configuration gap. However, I can still assist you with general electoral guidelines. Please verify your Gemini API key in the platform settings.",
-             title: "Consulate Intelligence Guard",
-             summary: "The AI Intelligence layer is currently offline, but the primary knowledge base is active.",
-             steps: [
-               "Check .env.local for GOOGLE_GENERATIVE_AI_API_KEY",
-               "Restart the development server",
-               "Verify API Key quotas in AI Studio"
-             ],
-             sources: ["VoteSaathi System Diagnostics"]
            };
            setMessages(prev => [...prev, fallbackMsg]);
            await playSpeech(fallbackMsg.content);
