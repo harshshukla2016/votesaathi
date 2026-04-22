@@ -1,0 +1,42 @@
+[
+  {
+    "id": "B001",
+    "name": "St. Xavier's High School (Mumbai)",
+    "address": "Dhobi Talao, Chhatrapati Shivaji Terminus Area, Mumbai, 400001",
+    "lat": 18.9442,
+    "lng": 72.8296,
+    "crowdDensity": 25
+  },
+  {
+    "id": "B002",
+    "name": "National Public School (Bangalore)",
+    "address": "12th Main Rd, HAL 2nd Stage, Indiranagar, Bengaluru, 560008",
+    "lat": 12.9716,
+    "lng": 77.6412,
+    "crowdDensity": 78
+  },
+  {
+    "id": "B003",
+    "name": "Kendriya Vidyalaya (New Delhi)",
+    "address": "Pragati Vihar, New Delhi, Delhi 110003",
+    "lat": 28.5892,
+    "lng": 77.2312,
+    "crowdDensity": 45
+  },
+  {
+    "id": "B004",
+    "name": "Don Bosco School (Kolkata)",
+    "address": "Park Circus, Ballygunge, Kolkata, West Bengal 700017",
+    "lat": 22.5448,
+    "lng": 88.3658,
+    "crowdDensity": 12
+  },
+  {
+    "id": "B005",
+    "name": "Bishop Cotton Girls' School (Bangalore)",
+    "address": "St Mark's Rd, Shanthala Nagar, Bengaluru, Karnataka 560001",
+    "lat": 12.9719,
+    "lng": 77.6009,
+    "crowdDensity": 92
+  }
+]

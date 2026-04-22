@@ -1,0 +1,30 @@
+{
+  "turnout_trends": [
+    ["Phase", "2019 Turnout", "2024 Actual/Predicted"],
+    ["Phase 1", 69.43, 66.14],
+    ["Phase 2", 67.99, 66.71],
+    ["Phase 3", 67.33, 65.68],
+    ["Phase 4", 65.51, 64.92],
+    ["Phase 5", 64.16, 62.20],
+    ["Phase 6", 63.48, 63.37],
+    ["Phase 7", 61.20, 61.50]
+  ],
+  "seat_distribution": [
+    ["Party", "Seats Secured"],
+    ["Conservative Alliance", 282],
+    ["Progressive Bloc", 125],
+    ["Techno-Democracy", 45],
+    ["Green Path", 28],
+    ["Others", 63]
+  ],
+  "phase_schedule": [
+    ["Phase", "States Covered", "Status"],
+    ["Phase 1", "UP, Bihar, WB, MP", "Completed"],
+    ["Phase 2", "Assam, Kerala, KA", "Completed"],
+    ["Phase 3", "Gujarat, Goa", "Completed"],
+    ["Phase 4", "Andhra, Telangana", "In Progress"],
+    ["Phase 5", "Mumbai, Odisha", "Upcoming"],
+    ["Phase 6", "Haryana, Delhi", "Upcoming"],
+    ["Phase 7", "Punjab, HP", "Upcoming"]
+  ]
+}
