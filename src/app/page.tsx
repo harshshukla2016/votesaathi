@@ -78,7 +78,7 @@ export default function Home() {
             <div className="relative rounded-[3rem] overflow-hidden shadow-[0_30px_100px_rgba(var(--color-primary),0.2)] bg-transparent transform-gpu" style={{ transform: "translateZ(50px)" }}>
               <Image 
                 alt="VoteSaathi 3D EVM" 
-                src="/evm_3d_render_1776906799423.png" 
+                src="/evm_3d_render.png" 
                 width={800} 
                 height={800}
                 className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-1000 ease-out drop-shadow-2xl"
