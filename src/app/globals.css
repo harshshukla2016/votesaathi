@@ -60,6 +60,18 @@
 
   /* Animation */
   --animate-spin-slow: spin 20s linear infinite;
+  --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
+  --animate-floating: floating 6s ease-in-out infinite;
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+
+  @keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
 
   /* Custom Fixed Colors (Saffron/Green shorthand) */
   --color-primary-fixed: var(--color-primary-fixed);
@@ -219,4 +231,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* 3D Utilities */
+@utility perspective-1000 {
+  perspective: 1000px;
+}
+
+@utility transform-gpu {
+  transform: translateZ(0);
+}
+
+@utility translate-z-4 {
+  transform: translateZ(4px);
+}
+
+@utility translate-z-8 {
+  transform: translateZ(8px);
+}
+
+@utility translate-z-12 {
+  transform: translateZ(12px);
+}
+
+@utility translate-z-20 {
+  transform: translateZ(20px);
 }
