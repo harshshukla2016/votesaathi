@@ -1,4 +1,8 @@
 {
+  "env": {
+    "SUPPRESS_GCT_WARNINGS": "true",
+    "GCP_METADATA_TIMEOUT_MS": "100"
+  },
   "headers": [
     {
       "source": "/(.*)",

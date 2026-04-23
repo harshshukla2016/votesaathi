@@ -52,9 +52,13 @@ If a query contains debunked claims or unverified rumors, provide the official E
 
 // Google Cloud Clients (Initialized via Env Vars)
 // Note: Ensure GOOGLE_APPLICATION_CREDENTIALS points to your service account JSON file
-export const speechClient = new SpeechClient();
-export const ttsClient = new TextToSpeechClient();
-export const translateClient = new TranslationServiceClient();
+const cloudConfig = {
+  projectId: process.env.GOOGLE_VERTEX_PROJECT || "votesaathi-e8265",
+};
 
-export const PROJECT_ID = process.env.GOOGLE_CLOUD_PROJECT_ID || "votesaathi-project";
+export const speechClient = new SpeechClient(cloudConfig);
+export const ttsClient = new TextToSpeechClient(cloudConfig);
+export const translateClient = new TranslationServiceClient(cloudConfig);
+
+export const PROJECT_ID = cloudConfig.projectId;
 export const LOCATION = "global";

@@ -1,5 +1,9 @@
 import type { NextConfig } from "next";
 
+// Suppress Google Cloud Metadata Lookup Warnings during build
+process.env.SUPPRESS_GCT_WARNINGS = 'true';
+process.env.GCP_METADATA_TIMEOUT_MS = '100';
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
