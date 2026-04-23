@@ -23,7 +23,7 @@ export default function VerifiedSearch() {
         <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">Verified Info X-Ray</h3>
       </div>
       
-      <div className="gcse-search" data-resultsUrl="/search-results" data-newWindow="true" data-queryParameterName="q">
+      <div className="gcse-search" data-resultsurl="/search-results" data-newwindow="true" data-queryparametername="q">
         {/* FALLBACK UI WHILE LOADING */}
         <div className="w-full h-12 bg-surface-container-high rounded-xl animate-pulse flex items-center px-4">
            <span className="text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-widest">Initializing Verified Search...</span>

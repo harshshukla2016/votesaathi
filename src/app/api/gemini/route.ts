@@ -3,11 +3,24 @@ import { generateText } from "ai";
 import { model, ELECTION_SYSTEM_PROMPT } from "@/lib/ai-core";
 import { detectLanguage, translateText } from "@/lib/translate-utils";
 
+// Simple Rate Limiter for Hackathon Efficiency
+const rateLimitMap = new Map<string, number>();
+const RATE_LIMIT_MS = 2000;
+
 /**
  * POST /api/gemini
  * Input: { query: string, language?: 'en' | 'hi' }
  */
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get('x-forwarded-for') || 'anonymous';
+  const now = Date.now();
+  const lastRequest = rateLimitMap.get(ip) || 0;
+
+  if (now - lastRequest < RATE_LIMIT_MS) {
+    return NextResponse.json({ error: "Too many requests. Please wait." }, { status: 429 });
+  }
+  rateLimitMap.set(ip, now);
+
   try {
     const { query, language = "en", type = "chat", rawContent = "" } = await req.json();
 
@@ -34,7 +47,9 @@ export async function POST(req: NextRequest) {
          prompt: `Content to Analyze:\n${rawContent || query}\n\nPlease generate the response in ${language === 'hi' ? 'Hindi' : 'English'}.`,
        });
 
-       const cleanJson = rawAiText.replace(/```json|```/g, "").trim();
+       // Robust JSON extraction
+       const jsonMatch = rawAiText.match(/\{[\s\S]*\}/);
+       const cleanJson = jsonMatch ? jsonMatch[0] : rawAiText;
        return NextResponse.json(JSON.parse(cleanJson));
     }
 
