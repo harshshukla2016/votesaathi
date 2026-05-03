@@ -16,7 +16,7 @@ export async function GET() {
       });
       results.push({ provider: "AI_STUDIO", model: modelId, status: "SUCCESS", response: text });
     } catch (err: unknown) {
-      results.push({ provider: "AI_STUDIO", model: modelId, status: "FAILED", error: err.message });
+      results.push({ provider: "AI_STUDIO", model: modelId, status: "FAILED", error: (err as any).message });
     }
   }
 
@@ -38,7 +38,7 @@ export async function GET() {
       });
       results.push({ provider: "VERTEX_AI", model: vModel.id, status: "SUCCESS", response: text });
     } catch (err: unknown) {
-      results.push({ provider: "VERTEX_AI", model: vModel.id, status: "FAILED", error: err.message });
+      results.push({ provider: "VERTEX_AI", model: vModel.id, status: "FAILED", error: (err as any).message });
     }
   }
 
