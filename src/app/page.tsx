@@ -325,90 +325,139 @@ export default function Home() {
       </section>
 
       {/* Footer: The Sovereign Charter */}
-      <footer className="relative overflow-hidden bg-surface-container-lowest mt-10 perspective-1000">
-        <div className="absolute inset-0 pointer-events-none opacity-30 z-0">
-          <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px]"></div>
-          <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[100px]"></div>
-          <div className="w-full h-full bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      <footer className="relative overflow-hidden bg-[#0B0D14] mt-20 border-t-4 border-orange-500">
+        {/* Cinematic Indian Democracy Background */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/indian-democracy-bg.png"
+            alt="Indian Democracy Heritage Background"
+            fill
+            unoptimized
+            className="object-cover opacity-[0.15] mix-blend-luminosity grayscale-[30%] object-bottom"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D14] via-[#0B0D14]/90 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B0D14] via-transparent to-[#0B0D14]"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-8 py-24 border-t border-outline-variant/20 relative z-10 glass-card rounded-t-[3rem] mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.2)]">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-16 items-start">
-            <div className="md:col-span-2 space-y-8">
+        {/* Top Government Banner */}
+        <div className="relative z-10 w-full bg-orange-500/10 border-b border-orange-500/20 backdrop-blur-md">
+          <div className="max-w-7xl mx-auto px-8 py-3 flex flex-wrap items-center justify-between text-[10px] sm:text-xs font-bold text-orange-200/80 uppercase tracking-widest">
+            <div className="flex items-center gap-4">
+               <span className="material-symbols-outlined text-sm text-orange-500">account_balance</span>
+               A National Initiative for Electoral Integrity
+            </div>
+            <div className="flex items-center gap-4 mt-2 sm:mt-0">
+               <a href="#" className="hover:text-white transition-colors">GOI Web Directory</a>
+               <span className="opacity-40">|</span>
+               <a href="#" className="hover:text-white transition-colors">National Portal of India</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-8 py-20 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+            <div className="md:col-span-5 space-y-8">
               <motion.div 
-                whileHover={{ scale: 1.05, rotateY: 10 }}
-                className="text-5xl font-black tracking-tighter text-on-surface flex items-center gap-4 transform-gpu cursor-pointer w-max"
+                whileHover={{ scale: 1.02 }}
+                className="flex items-center gap-5 cursor-pointer"
               >
-                 <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary-container rounded-2xl flex items-center justify-center shadow-2xl shadow-primary/30 border border-white/20">
-                    <span className="material-symbols-outlined text-on-primary text-3xl font-black drop-shadow-md">token</span>
+                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center shadow-[0_0_30px_rgba(249,115,22,0.3)] border border-orange-500/40">
+                    <span className="material-symbols-outlined text-white text-4xl font-black">how_to_vote</span>
                  </div>
-                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-on-surface to-on-surface-variant">VoteSaathi</span>
+                 <div>
+                   <h1 className="text-4xl font-black tracking-tighter text-white font-headline">VoteSaathi</h1>
+                   <p className="text-xs font-bold text-orange-400 tracking-[0.2em] uppercase mt-1">Digital Consulate of India</p>
+                 </div>
               </motion.div>
-              <p className="text-base text-on-surface-variant font-medium leading-relaxed max-w-md">
-                The Digital Consulate for Indian Democracy. Empowering 1.4 Billion citizens with sovereign AI intelligence and verifiable integrity.
+              <p className="text-sm text-white/60 font-medium leading-relaxed max-w-sm">
+                Empowering 1.4 Billion citizens with sovereign AI intelligence, verifiable integrity, and localized civic education. 
+                Celebrating the world's largest democratic festival uniting every faith, language, and culture.
               </p>
-              <div className="flex gap-5">
-                 {['facebook', 'twitter', 'linkedin', 'youtube'].map((s, i) => (
-                   <motion.div 
-                      key={s} 
-                      whileHover={{ scale: 1.2, rotateZ: 10, y: -5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                      className={`w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/20 flex items-center justify-center text-on-surface-variant hover:bg-${i%2===0?'primary':'secondary'} hover:text-white transition-colors cursor-pointer shadow-lg`}
-                   >
-                      <span className="material-symbols-outlined text-xl">public</span>
-                   </motion.div>
-                 ))}
+              
+              <div className="flex items-center gap-4 pt-4">
+                 <div className="flex gap-3">
+                    {['facebook', 'twitter', 'linkedin', 'youtube'].map((s, i) => (
+                      <motion.div 
+                         key={s} 
+                         whileHover={{ y: -3 }}
+                         className={`w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all cursor-pointer`}
+                      >
+                         <span className="material-symbols-outlined text-sm">public</span>
+                      </motion.div>
+                    ))}
+                 </div>
               </div>
             </div>
 
-            <div className="space-y-6">
-               <h4 className="text-xs font-black uppercase tracking-[0.3em] text-primary drop-shadow-[0_0_10px_rgba(var(--color-primary),0.3)]">Protocol</h4>
-               <ul className="space-y-4 text-sm font-bold text-on-surface-variant">
-                  {['Governance Charter', 'Digital Privacy Act', 'AI Ethics Manifest', 'Technical Whitepaper'].map(link => (
-                    <li key={link}>
-                      <Link href="#" className="hover:text-primary transition-colors flex items-center gap-2 group">
-                        <span className="w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-4"></span>
-                        {link}
-                      </Link>
-                    </li>
-                  ))}
-               </ul>
-            </div>
+            <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-10">
+               <div className="space-y-6">
+                  <h4 className="text-[11px] font-black uppercase tracking-[0.25em] text-white/40 border-b border-white/10 pb-4">Government</h4>
+                  <ul className="space-y-3 text-sm font-semibold text-white/70">
+                     {['Election Commission', 'Ministry of Law', 'National Voter Portal', 'Voter Helpline'].map(link => (
+                       <li key={link}>
+                         <Link href="#" className="hover:text-orange-400 transition-colors flex items-center gap-2 group">
+                           <span className="w-1.5 h-1.5 rounded-full bg-orange-500/50 group-hover:bg-orange-400 transition-colors"></span>
+                           {link}
+                         </Link>
+                       </li>
+                     ))}
+                  </ul>
+               </div>
 
-            <div className="space-y-6">
-               <h4 className="text-xs font-black uppercase tracking-[0.3em] text-secondary drop-shadow-[0_0_10px_rgba(var(--color-secondary),0.3)]">Ecosystem</h4>
-               <ul className="space-y-4 text-sm font-bold text-on-surface-variant">
-                  {[
-                    {name: 'Competitive Battle', path: '/battle'},
-                    {name: 'Citizen Forum', path: '/forum'},
-                    {name: 'Truth Center', path: '/truth'},
-                    {name: 'Mastery Module', path: '/learn'}
-                  ].map(link => (
-                    <li key={link.name}>
-                      <Link href={link.path} className="hover:text-secondary transition-colors flex items-center gap-2 group">
-                        <span className="w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-4"></span>
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-               </ul>
+               <div className="space-y-6">
+                  <h4 className="text-[11px] font-black uppercase tracking-[0.25em] text-white/40 border-b border-white/10 pb-4">Resources</h4>
+                  <ul className="space-y-3 text-sm font-semibold text-white/70">
+                     {['Electoral Roll', 'Know Your Candidate', 'Booth Locator', 'Result Analytics'].map(link => (
+                       <li key={link}>
+                         <Link href="#" className="hover:text-orange-400 transition-colors flex items-center gap-2 group">
+                           <span className="w-1.5 h-1.5 rounded-full bg-orange-500/50 group-hover:bg-orange-400 transition-colors"></span>
+                           {link}
+                         </Link>
+                       </li>
+                     ))}
+                  </ul>
+               </div>
+
+               <div className="space-y-6 col-span-2 sm:col-span-1">
+                  <h4 className="text-[11px] font-black uppercase tracking-[0.25em] text-white/40 border-b border-white/10 pb-4">Information</h4>
+                  <ul className="space-y-3 text-sm font-semibold text-white/70">
+                     {['Privacy Policy', 'Terms of Service', 'Copyright Policy', 'Hyperlinking Policy', 'Accessibility Statement'].map(link => (
+                       <li key={link}>
+                         <Link href="#" className="hover:text-orange-400 transition-colors flex items-center gap-2 group">
+                           <span className="w-1.5 h-1.5 rounded-full bg-orange-500/50 group-hover:bg-orange-400 transition-colors"></span>
+                           {link}
+                         </Link>
+                       </li>
+                     ))}
+                  </ul>
+               </div>
             </div>
           </div>
 
-          <div className="mt-20 pt-10 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-8">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-on-surface-variant opacity-60">
-              © 2024 THE DIGITAL SOVEREIGN. <span className="text-primary">BUILT FOR BHARAT.</span>
-            </p>
-            <div className="flex gap-8 text-[10px] font-black uppercase tracking-widest text-on-surface-variant glass-card px-6 py-2 rounded-full border border-outline-variant/20">
-               <span className="flex items-center gap-3">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary shadow-[0_0_8px_rgba(var(--color-secondary),1)]"></span>
-                  </span>
-                  SYSTEMS NOMINAL
-               </span>
-               <span className="opacity-50">|</span>
-               <span className="text-primary font-black">v1.2.4-PROD</span>
+          <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex items-center gap-4">
+              <div className="text-center md:text-left space-y-1">
+                <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-white/40">
+                  © 2024 VoteSaathi Intelligence Mesh.
+                </p>
+                <p className="text-[10px] font-semibold text-white/30">
+                  Content managed by the Department of Civic Technologies. Designed and Developed by NIC.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex gap-6 items-center">
+              <div className="flex gap-4 text-[9px] font-black uppercase tracking-widest text-orange-500/80 bg-orange-500/10 px-4 py-2 rounded-lg border border-orange-500/20">
+                 <span className="flex items-center gap-2">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    AI SYSTEMS NOMINAL
+                 </span>
+                 <span className="opacity-40">|</span>
+                 <span className="text-white/60">V1.4.2-BHARAT</span>
+              </div>
             </div>
           </div>
         </div>
