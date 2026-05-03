@@ -1,4 +1,3 @@
-import Sidebar from "@/components/Sidebar";
 import { getElectoralPulse } from "@/app/actions";
 // Note: We need a client component for the animated widgets to use framer-motion
 import DashboardClient from "./DashboardClient";
@@ -8,7 +7,6 @@ export default async function Dashboard() {
 
   return (
     <div className="flex bg-background min-h-screen transition-colors">
-      <Sidebar />
       <main className="flex-1 lg:ml-20 flex flex-col min-h-screen">
         <header className="px-8 py-10 lg:py-16 max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>

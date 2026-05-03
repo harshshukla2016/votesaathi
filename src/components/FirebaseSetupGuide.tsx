@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 
 export default function FirebaseSetupGuide() {
   return (
@@ -17,7 +16,7 @@ export default function FirebaseSetupGuide() {
        <div className="w-full text-left bg-black/20 p-8 rounded-2xl border border-outline-variant/10 space-y-6">
           <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Setup Instructions:</p>
           <ul className="text-xs space-y-4 text-on-surface-variant list-decimal pl-6">
-             <li>Create a project at <a href="https://console.firebase.google.com/" target="_blank" className="text-primary underline">Firebase Console</a>.</li>
+             <li>Create a project at <a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer" className="text-primary underline">Firebase Console</a>.</li>
              <li className="p-4 bg-primary/10 rounded-xl border border-primary/20">
                 <p className="font-black text-primary mb-1">CRITICAL FIX (Error: auth/configuration-not-found):</p>
                 Navigate to **Build &gt; Authentication &gt; Sign-in method**, click **Add new provider**, and choose **Google**. You MUST toggle it to **Enabled**.

@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { questions, candidateInfos } from "./questions";
+import { questions } from "./questions";
 import ResultsView from "./ResultsView";
 import Link from "next/link";
 
 export default function QuizPage() {
   const [currentStep, setCurrentStep] = useState(0); // 0 = Intro, 1..N = Questions, N+1 = Loading, N+2 = Results
   const [answers, setAnswers] = useState<number[]>([]);
-  const [isMatching, setIsMatching] = useState(false);
+  
 
   const totalQuestions = questions.length;
 

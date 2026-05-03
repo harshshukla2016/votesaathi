@@ -1,6 +1,5 @@
 "use client";
 
-import Sidebar from "@/components/Sidebar";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -25,7 +24,6 @@ export default function BallotPage() {
 
   return (
     <div className="flex bg-background min-h-screen transition-colors overflow-hidden">
-      <Sidebar />
       <main className="flex-1 lg:ml-20 flex flex-col h-screen overflow-hidden relative">
         <header className="px-8 py-10 lg:py-16 max-w-4xl mx-auto w-full">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-error-container text-on-error-container border border-error/20 mb-4">

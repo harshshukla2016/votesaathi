@@ -1,10 +1,8 @@
-import Sidebar from "@/components/Sidebar";
 import SaathiChat from "@/components/SaathiChat";
 
 export default function ChatPage() {
   return (
     <div className="flex bg-background min-h-screen transition-colors overflow-hidden">
-      <Sidebar />
       <main className="flex-1 lg:ml-20 flex flex-col h-screen overflow-hidden relative pt-20">
         <header className="px-8 py-6 lg:py-8 max-w-5xl mx-auto w-full shrink-0">
           <p className="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-2 font-label">Focused Session</p>

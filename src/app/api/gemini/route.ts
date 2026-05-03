@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
     try {
       const cleanJson = text.replace(/```json|```/g, "").trim();
       jsonResponse = JSON.parse(cleanJson);
-    } catch (e) {
+    } catch {
       // Fallback if parsing fails
       jsonResponse = {
         title: "Information Assessment",

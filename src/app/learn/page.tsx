@@ -1,6 +1,5 @@
 "use client";
 
-import Sidebar from "@/components/Sidebar";
 import { useAuth } from "@/lib/auth-context";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { useState } from "react";
@@ -31,7 +30,7 @@ const quizQuestions = [
 ];
 
 export default function LearnPage() {
-  const { user, profile, login } = useAuth();
+  const { user, login } = useAuth();
   const [activeTab, setActiveTab] = useState<'cards' | 'quiz'>('cards');
   const [cardIndex, setCardIndex] = useState(0);
   const [quizIndex, setQuizIndex] = useState(0);
@@ -72,7 +71,6 @@ export default function LearnPage() {
   if (!user) {
     return (
       <div className="flex bg-background min-h-screen">
-        <Sidebar />
         <main className="flex-1 lg:ml-20 flex flex-col items-center justify-center p-8">
            <div className="glass-card p-12 rounded-[3rem] text-center max-w-md shadow-3xl">
               <span className="material-symbols-outlined text-6xl text-primary mb-6">lock_person</span>
@@ -87,7 +85,6 @@ export default function LearnPage() {
 
   return (
     <div className="flex bg-background min-h-screen transition-colors overflow-hidden">
-      <Sidebar />
       <main className="flex-1 lg:ml-20 flex flex-col h-screen overflow-hidden relative">
         <header className="px-12 pt-16 mb-8 relative z-10 flex flex-col items-center text-center">
             <p className="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-2 font-label">Mastery Center</p>

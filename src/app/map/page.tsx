@@ -2,8 +2,8 @@
 
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import { motion, AnimatePresence, useSpring, useTransform } from "framer-motion";
-import { useState, useEffect, useCallback, useMemo } from "react";
-import Sidebar from "@/components/Sidebar";
+import { useState, useEffect, useCallback } from "react";
+
 import { useLiveElectionResults, allianceColors } from "@/lib/results-mock";
 import booths from "@/lib/booth-data.json";
 import LeafletFallbackMap from "@/components/LeafletFallbackMap";
@@ -109,7 +109,7 @@ export default function MapPage() {
     setMap(map);
   }, []);
 
-  const onUnmount = useCallback(function callback(map: google.maps.Map) {
+  const onUnmount = useCallback(function callback() {
     setMap(null);
   }, []);
 
@@ -117,7 +117,6 @@ export default function MapPage() {
 
   return (
     <div className="flex bg-background min-h-screen transition-colors overflow-hidden">
-      <Sidebar />
       <main className="flex-1 lg:ml-20 h-screen relative overflow-hidden flex flex-col">
         
         {/* Failover Alert */}

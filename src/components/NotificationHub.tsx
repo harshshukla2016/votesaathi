@@ -2,9 +2,9 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { messaging, db, auth } from "@/lib/firebase-config";
+import { messaging, db } from "@/lib/firebase-config";
 import { getToken, onMessage } from "firebase/messaging";
-import { collection, query, where, onSnapshot, orderBy, Timestamp } from "firebase/firestore";
+import { collection, query, onSnapshot, orderBy, Timestamp } from "firebase/firestore";
 
 interface ConsulateAlert {
   id: string;

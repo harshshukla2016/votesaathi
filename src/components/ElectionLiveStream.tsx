@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 
 export default function ElectionLiveStream() {
   // DD News Live Stream (Official Government Channel)

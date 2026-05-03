@@ -18,7 +18,6 @@ const eslintConfig = defineConfig([
   ]),
   {
     rules: {
-      "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/no-require-imports": "off",
       "@next/next/no-img-element": "off",
       "@next/next/no-page-custom-font": "off",

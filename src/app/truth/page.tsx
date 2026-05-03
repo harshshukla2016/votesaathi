@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 interface FactCheckResult {
   truthScore: number;
@@ -15,7 +15,7 @@ export default function TruthCenter() {
   const [claim, setClaim] = useState("");
   const [isScanning, setIsScanning] = useState(false);
   const [result, setResult] = useState<FactCheckResult | null>(null);
-  const scannerRef = useRef<HTMLDivElement>(null);
+  
 
   const startScan = async () => {
     if (!claim.trim()) return;

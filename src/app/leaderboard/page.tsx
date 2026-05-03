@@ -1,6 +1,5 @@
 "use client";
 
-import Sidebar from "@/components/Sidebar";
 import { db } from "@/lib/firebase-config";
 import { collection, query, orderBy, limit, onSnapshot } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
@@ -40,7 +39,6 @@ export default function LeaderboardPage() {
 
   return (
     <div className="flex bg-background min-h-screen transition-colors overflow-hidden">
-      <Sidebar />
       <main className="flex-1 lg:ml-20 flex flex-col h-screen overflow-hidden relative">
         <header className="px-12 pt-16 mb-8 relative z-10">
             <p className="text-secondary font-bold text-xs uppercase tracking-[0.2em] mb-2 font-label">Elite Citizens</p>

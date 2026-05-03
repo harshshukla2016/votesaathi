@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import booths from "@/lib/booth-data.json";
 import 'leaflet/dist/leaflet.css';

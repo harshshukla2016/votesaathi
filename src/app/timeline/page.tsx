@@ -1,6 +1,5 @@
 "use client";
 
-import Sidebar from "@/components/Sidebar";
 import ReadinessWizard from "@/components/ReadinessWizard";
 import { useAuth } from "@/lib/auth-context";
 import { motion, AnimatePresence } from "framer-motion";
@@ -89,7 +88,6 @@ export default function Timeline() {
 
   return (
     <div className="flex bg-background min-h-screen transition-colors overflow-hidden">
-      <Sidebar />
       <main className="flex-1 lg:ml-20 flex flex-col h-screen overflow-hidden relative">
         
         <AnimatePresence>

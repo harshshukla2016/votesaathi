@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
 import { motion } from "framer-motion";
 import electionData from "@/lib/election-data.json";
-import { useLiveElectionResults, allianceColors } from "@/lib/results-mock";
+import { useLiveElectionResults } from "@/lib/results-mock";
 
 export const turnoutChartOptions = {
   title: "Voter Turnout Trends (Historical vs Current)",

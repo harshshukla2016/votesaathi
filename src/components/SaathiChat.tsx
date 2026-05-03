@@ -30,7 +30,7 @@ export default function SaathiChat() {
   const [isMuted, setIsMuted] = useState(false);
   
   const recognitionRef = useRef<unknown>(null);
-  const audioContextRef = useRef<AudioContext | null>(null);
+  
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
