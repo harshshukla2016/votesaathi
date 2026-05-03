@@ -15,7 +15,7 @@ const steps = [
     title: "Election Announcement",
     date: "MARCH 16",
     desc: "The ECI announces the schedule, and the Model Code of Conduct (MCC) immediately comes into effect.",
-    videoId: "M99yX-e6m7A", 
+    videoId: "ArGJmk7Q25o", 
     duration: "1 Week"
   },
   {
@@ -23,7 +23,7 @@ const steps = [
     title: "Nomination & Scrutiny",
     date: "MARCH 20 - APRIL 05",
     desc: "Candidates file nomination papers. ECI officials scrutinize these to ensure eligibility criteria are met.",
-    videoId: "jH_fX9J30L0",
+    videoId: "z3AbBGPXwAo",
     duration: "2 Weeks"
   },
   {
@@ -31,7 +31,7 @@ const steps = [
     title: "Voter Campaigning",
     date: "APRIL 06 - JUNE 01",
     desc: "Political parties engage in public outreach. Campaigning must stop 48 hours before the polling day.",
-    videoId: "M99yX-e6m7A",
+    videoId: "gkH6Q0UvRkk",
     duration: "6 Weeks"
   },
   {
@@ -39,7 +39,7 @@ const steps = [
     title: "Electronic Voting (EVM)",
     date: "PHASE WISE",
     desc: "Citizens cast their votes using Electronic Voting Machines (EVM) with VVPAT verification.",
-    videoId: "jH_fX9J30L0",
+    videoId: "BtsyBetcCCs",
     duration: "Daily by Phase"
   },
   {
@@ -47,7 +47,7 @@ const steps = [
     title: "Counting & Tallying",
     date: "JUNE 04",
     desc: "Votes are counted under high security presence. Each vote is tallyed against VVPAT slips in random booths.",
-    videoId: "M99yX-e6m7A",
+    videoId: "n_l-1pXirzA",
     duration: "24 Hours"
   },
   {
@@ -55,7 +55,7 @@ const steps = [
     title: "Declaration of Results",
     date: "JUNE 04 EVENING",
     desc: "Final results are announced for each constituency. The winning party/alliance is invited to form government.",
-    videoId: "jH_fX9J30L0",
+    videoId: "lY_n_l-1pXirzA",
     duration: "Immediate"
   }
 ];
@@ -67,6 +67,7 @@ export default function Timeline() {
 
   useEffect(() => {
     if (user && !profile?.readinessCompleted) {
+       
       setWizardOpen(true);
     }
   }, [user, profile]);

@@ -34,11 +34,15 @@ export async function POST(req: NextRequest) {
     }
 
     // 1. Handle specialized News Intelligence, Fact Checking, & Forum Answers
-    if (type === "news_intelligence" || type === "fact_check" || type === "civic_answer") {
+    if (type === "news_intelligence" || type === "fact_check" || type === "civic_answer" || type === "voter_verification" || type === "campaign_intel") {
        const systemPrompt = type === "news_intelligence" 
          ? `You are an AI News Analyst for the VoteSaathi Digital Consulate. Analyze raw news articles and provide a neutral intelligence briefing. Output MUST be valid JSON: { "shortSummary": "text", "keyTakeaways": [], "biasAssessment": { "score": 0-100, "label": "Neutral|Leaning|Persuasive", "reasoning": "text" }, "verifiedFacts": [] }`
          : type === "fact_check"
          ? `You are an AI Misinformation Detector for the VoteSaathi Digital Consulate. Your task is to verify electoral claims and rumors. Output MUST be valid JSON: { "truthScore": 0-100, "status": "Verified|Disputed|Misinformation", "analysis": "text", "credibleSources": ["source name"], "misleadingElements": ["e.g. Deepfake", "Out of Context"] }`
+         : type === "voter_verification"
+         ? `You are a high-security ECI Gateway Interface for the VoteSaathi Digital Consulate. Given a voter's EPIC (Voter ID) number, generate a realistic (simulated for testing) voter profile. Output MUST be valid JSON: { "name": "Full Name", "epic": "EPIC_ID", "state": "State Name", "constituency": "Constituency Name", "pollingStation": "Specific School or Building Name", "status": "Active|Shifted|Deceased" }`
+         : type === "campaign_intel"
+         ? `You are a Senior Electoral Strategist for the VoteSaathi Digital Consulate. Provide structured intelligence on parties, hot seats, and the campaign trail. Output MUST be valid JSON: { "parties": [{ "name": "Party", "symbol": "Emoji", "candidate": "Name", "majorPromise": "text" }], "hotSeats": [{ "name": "Constituency", "status": "Critical|Stable", "keyIssue": "text" }], "campaignTrail": [{ "event": "Action", "leader": "Name", "location": "City", "time": "Relative Time" }] }`
          : `You are the Saathi AI Liaison for the Citizen Forum. Provide a concise, expert, and neutral answer to the citizen's question about the election process. Output MUST be valid JSON: { "answer": "text", "confidence": "high", "officialSources": ["Election Commission of India"] }`;
 
        const { text: rawAiText } = await generateText({
@@ -96,7 +100,7 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(jsonResponse);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Gemini API Error:", error);
     const status = error.message?.includes("API key") ? 401 : 500;
     return NextResponse.json({ 

@@ -1,16 +1,14 @@
-import { createVertex } from "@ai-sdk/google-vertex";
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { SpeechClient } from "@google-cloud/speech";
 import { TextToSpeechClient } from "@google-cloud/text-to-speech";
 import { TranslationServiceClient } from "@google-cloud/translate";
 
-// Initialize Vertex AI Provider with explicit project/location defaults
-const vertex = createVertex({
-  project: process.env.GOOGLE_VERTEX_PROJECT || "votesaathi-e8265",
-  location: process.env.GOOGLE_VERTEX_LOCATION || "us-central1",
+const google = createGoogleGenerativeAI({
+  apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY || "",
 });
 
-// Initialize Gemini 1.5 Flash via Vertex AI
-export const model = vertex("gemini-1.5-flash");
+// Initialize Gemini 2.5 Flash via Google AI SDK
+export const model = google("gemini-2.5-flash");
 
 // System Prompt for Indian Election Context
 export const ELECTION_SYSTEM_PROMPT = `

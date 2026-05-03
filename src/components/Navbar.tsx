@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 
 import UserChip from "./UserChip";
 import NotificationHub from "./NotificationHub";
@@ -13,6 +12,7 @@ export default function Navbar() {
   // Initialize theme from document class
   useEffect(() => {
     const isDark = document.documentElement.classList.contains("dark");
+       
     setIsDarkMode(isDark);
   }, []);
 

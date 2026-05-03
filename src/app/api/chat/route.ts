@@ -47,7 +47,7 @@ export async function POST(req: Request) {
   }
 
   const result = await streamText({
-    model: google('models/gemini-1.5-pro-latest'),
+    model: google('gemini-2.5-flash'),
     messages,
     system: `You are VoteSaathi, a premium AI assistant for the Digital Consulate application.
     You are professional, authoritative, but approachable.
@@ -56,5 +56,5 @@ export async function POST(req: Request) {
     Refuse to take a side in political debates; provide neutral, data-driven insights instead.`,
   });
 
-  return (result as any).toAIStreamResponse();
+  return (result as unknown).toAIStreamResponse();
 }

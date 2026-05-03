@@ -1,5 +1,4 @@
 import Sidebar from "@/components/Sidebar";
-import SaathiChat from "@/components/SaathiChat";
 import { getElectoralPulse } from "@/app/actions";
 // Note: We need a client component for the animated widgets to use framer-motion
 import DashboardClient from "./DashboardClient";

@@ -12,7 +12,7 @@ interface Message {
 
 declare global {
   interface Window {
-    webkitSpeechRecognition: any;
+    webkitSpeechRecognition: unknown;
   }
 }
 
@@ -27,7 +27,9 @@ export default function SaathiChat() {
   const [language, setLanguage] = useState<"en" | "hi">("en");
   const [liveTranscription, setLiveTranscription] = useState("");
   
-  const recognitionRef = useRef<any>(null);
+  const [isMuted, setIsMuted] = useState(false);
+  
+  const recognitionRef = useRef<unknown>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -59,7 +61,7 @@ export default function SaathiChat() {
       recognition.interimResults = true;
       recognition.lang = language === "en" ? "en-IN" : "hi-IN";
 
-      recognition.onresult = (event: any) => {
+      recognition.onresult = (event: unknown) => {
         let interimTranscript = "";
         let finalTranscript = "";
 
@@ -75,13 +77,18 @@ export default function SaathiChat() {
 
         // If Jarvis mode is on and we have a final result, auto-send after a brief pause
         if (finalTranscript && isJarvisMode) {
+          // eslint-disable-next-line react-hooks/immutability
           handleAutoSubmit(finalTranscript);
         }
       };
 
-      recognition.onerror = (event: any) => {
-        console.error("Speech Rec Error:", event.error);
-        if (event.error === "no-speech") setIsListening(false);
+      recognition.onerror = (event: unknown) => {
+        if (event.error === "no-speech") {
+          console.warn("Speech Rec: No speech detected. Waiting...");
+          setIsListening(false);
+        } else {
+          console.error("Speech Rec Error:", event.error);
+        }
       };
 
       recognition.onend = () => {
@@ -91,12 +98,13 @@ export default function SaathiChat() {
 
       recognitionRef.current = recognition;
     }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language, isJarvisMode]);
 
-  const handleAutoSubmit = (text: string) => {
+  function handleAutoSubmit(text: string) {
     setLiveTranscription("");
     sendMessage(text);
-  };
+  }
 
   const toggleMic = () => {
     if (isListening) {
@@ -117,6 +125,15 @@ export default function SaathiChat() {
     } else {
        recognitionRef.current?.stop();
        setIsListening(false);
+    }
+  }
+
+  const toggleMute = () => {
+    const newState = !isMuted;
+    setIsMuted(newState);
+    if (newState && typeof window !== "undefined") {
+      window.speechSynthesis?.cancel();
+      currentAudioRef.current?.pause();
     }
   }
 
@@ -179,6 +196,8 @@ export default function SaathiChat() {
   };
 
   const playSpeech = async (text: string) => {
+    if (isMuted) return;
+
     try {
       if (typeof window !== "undefined" && window.speechSynthesis) {
         // Stop any current synthesis
@@ -253,6 +272,14 @@ export default function SaathiChat() {
 
         <div className="flex items-center gap-4">
            <button 
+             onClick={toggleMute}
+             className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${isMuted ? 'bg-error/20 text-error shadow-lg shadow-error/10' : 'bg-surface-container-high text-on-surface-variant hover:text-primary'}`}
+             title={isMuted ? "Unmute AI Voice" : "Mute AI Voice"}
+           >
+              <span className="material-symbols-outlined text-xl">{isMuted ? 'volume_off' : 'volume_up'}</span>
+           </button>
+
+           <button 
              onClick={toggleJarvis}
              className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${isJarvisMode ? 'bg-secondary text-on-secondary shadow-lg shadow-secondary/30' : 'bg-surface-container-high text-on-surface-variant hover:text-on-surface'}`}
            >
@@ -263,7 +290,7 @@ export default function SaathiChat() {
              {["en", "hi"].map(l => (
                <button 
                  key={l}
-                 onClick={() => setLanguage(l as any)}
+                 onClick={() => setLanguage(l as unknown)}
                  className={`px-4 py-1.5 text-[10px] font-black rounded-lg transition-all ${language === l ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
                >
                  {l === 'en' ? 'ENGLISH' : 'हिन्दी'}
@@ -316,7 +343,7 @@ export default function SaathiChat() {
             >
                <div className="bg-secondary/10 border border-secondary/20 p-4 rounded-2xl text-secondary text-xs font-bold italic shadow-lg shadow-secondary/5">
                   <span className="opacity-50 mr-2 not-italic underline decoration-secondary/30">Transcribing:</span>
-                  "{liveTranscription}"
+                  &quot;{liveTranscription}&quot;
                </div>
             </motion.div>
           )}

@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   const models = ["gemini-1.5-flash", "gemini-1.5-pro"];
-  const results: any[] = [];
+  const results: unknown[] = [];
 
   // 1. Test AI Studio (Generative Language API)
   for (const modelId of models) {
@@ -15,7 +15,7 @@ export async function GET() {
         prompt: "Say 'studio online'",
       });
       results.push({ provider: "AI_STUDIO", model: modelId, status: "SUCCESS", response: text });
-    } catch (err: any) {
+    } catch (err: unknown) {
       results.push({ provider: "AI_STUDIO", model: modelId, status: "FAILED", error: err.message });
     }
   }
@@ -37,7 +37,7 @@ export async function GET() {
         prompt: "Say 'vertex online'",
       });
       results.push({ provider: "VERTEX_AI", model: vModel.id, status: "SUCCESS", response: text });
-    } catch (err: any) {
+    } catch (err: unknown) {
       results.push({ provider: "VERTEX_AI", model: vModel.id, status: "FAILED", error: err.message });
     }
   }

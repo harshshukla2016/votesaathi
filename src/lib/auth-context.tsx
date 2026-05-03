@@ -13,7 +13,7 @@ import { doc, getDoc, setDoc, onSnapshot } from "firebase/firestore";
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  profile: any;
+  profile: unknown;
   login: () => Promise<void>;
   logout: () => Promise<void>;
 }
@@ -22,11 +22,12 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [profile, setProfile] = useState<any>(null);
+  const [profile, setProfile] = useState<unknown>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!isConfigured || !auth || !db) {
+       
       setLoading(false);
       return;
     }

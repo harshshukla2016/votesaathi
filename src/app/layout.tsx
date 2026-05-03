@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Public_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import ConditionalNavbar from "@/components/ConditionalNavbar";
 import { AuthProvider } from "@/lib/auth-context";
 
 const inter = Inter({
@@ -173,7 +173,7 @@ export default function RootLayout({
             <div className="absolute top-0 right-1/4 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] mix-blend-screen transform -translate-y-1/2"></div>
             <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[100px] mix-blend-screen transform translate-y-1/3"></div>
           </div>
-          <Navbar />
+          <ConditionalNavbar />
           <main id="main-content">
             {children}
           </main>

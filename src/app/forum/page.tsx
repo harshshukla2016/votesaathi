@@ -12,8 +12,7 @@ import {
   updateDoc, 
   doc, 
   increment, 
-  serverTimestamp,
-  Timestamp
+  serverTimestamp
 } from "firebase/firestore";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { isConfigured } from "@/lib/firebase-config";
@@ -24,7 +23,7 @@ interface QAThread {
   question: string;
   authorName: string;
   authorPhoto?: string;
-  timestamp: any;
+  timestamp: unknown;
   upvotes: number;
   aiAnswer?: string;
   aiConfidence?: string;
@@ -218,7 +217,7 @@ export default function CitizenForum() {
                                     <span className="px-2 py-0.5 rounded-full bg-primary/20 text-[8px] font-black text-primary uppercase">{thread.aiConfidence}% Intelligence</span>
                                  </div>
                                  <p className="text-sm font-body text-on-surface leading-relaxed italic">
-                                    "{thread.aiAnswer}"
+                                    &quot;{thread.aiAnswer}&quot;
                                  </p>
                               </motion.div>
                             ) : (

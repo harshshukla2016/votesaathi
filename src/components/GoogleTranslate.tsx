@@ -15,11 +15,11 @@ export default function GoogleTranslate() {
     document.body.appendChild(script);
 
     // Initialize the widget
-    (window as any).googleTranslateElementInit = () => {
-      new (window as any).google.translate.TranslateElement(
+    (window as unknown).googleTranslateElementInit = () => {
+      new (window as unknown).google.translate.TranslateElement(
         {
           pageLanguage: "en",
-          layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE,
+          layout: (window as unknown).google.translate.TranslateElement.InlineLayout.SIMPLE,
           includedLanguages: "en,hi,bn,te,mr,ta,gu,kn,ml,pa,as,ur", // Major Indian languages
         },
         "google_translate_element"

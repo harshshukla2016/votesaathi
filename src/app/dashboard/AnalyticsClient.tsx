@@ -33,6 +33,7 @@ export default function AnalyticsClient() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+       
     setMounted(true);
   }, []);
 

@@ -40,23 +40,27 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 pt-6">
-            <motion.button 
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative bg-primary text-on-primary font-black font-headline py-5 px-12 rounded-2xl shadow-3xl shadow-primary/40 flex items-center justify-center gap-4 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-              <span className="material-symbols-outlined text-2xl">bolt</span>
-              <span className="text-lg uppercase tracking-widest">Enter Dashboard</span>
-            </motion.button>
+            <Link href="/dashboard" className="block">
+              <motion.button 
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full group relative bg-primary text-on-primary font-black font-headline py-5 px-12 rounded-2xl shadow-3xl shadow-primary/40 flex items-center justify-center gap-4 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <span className="material-symbols-outlined text-2xl">bolt</span>
+                <span className="text-lg uppercase tracking-widest">Enter Dashboard</span>
+              </motion.button>
+            </Link>
             
-            <motion.button 
-              whileHover={{ backgroundColor: "rgba(var(--color-surface-container-highest), 1)" }}
-              className="px-10 py-5 bg-surface-container-high/40 backdrop-blur-md text-on-surface rounded-2xl font-headline font-black transition-all flex items-center justify-center gap-3 border border-outline-variant/30 uppercase tracking-widest text-sm"
-            >
-              <span className="material-symbols-outlined font-thin">play_circle</span>
-              Experience AI
-            </motion.button>
+            <Link href="/chat" className="block">
+              <motion.button 
+                whileHover={{ backgroundColor: "rgba(var(--color-surface-container-highest), 1)" }}
+                className="w-full px-10 py-5 bg-surface-container-high/40 backdrop-blur-md text-on-surface rounded-2xl font-headline font-black transition-all flex items-center justify-center gap-3 border border-outline-variant/30 uppercase tracking-widest text-sm"
+              >
+                <span className="material-symbols-outlined font-thin">play_circle</span>
+                Experience AI
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
         
@@ -212,6 +216,40 @@ export default function Home() {
           <Link href="/quiz" className="inline-flex items-center gap-4 px-6 py-3 bg-surface-container-highest rounded-xl text-secondary font-black text-xs uppercase tracking-widest hover:bg-secondary hover:text-on-secondary transition-all transform group-hover:translate-z-12 shadow-lg hover:shadow-secondary/30">
             Start Quiz <span className="material-symbols-outlined text-sm">arrow_forward</span>
           </Link>
+        </motion.div>
+
+        {/* Lumina Logistics Card */}
+        <motion.div
+           initial={{ opacity: 0, y: 50, rotateX: 10 }}
+           whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+           whileHover={{ scale: 1.05, z: 30 }}
+           viewport={{ once: true }}
+           transition={{ delay: 0.3, type: "spring", stiffness: 300, damping: 20 }}
+           className="group relative md:col-span-3 bg-lumina-primary text-white border border-white/20 rounded-[2.5rem] p-12 shadow-3xl overflow-hidden transform-gpu"
+           style={{ transformStyle: "preserve-3d" }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-lumina-primary via-lumina-tertiary/40 to-lumina-primary opacity-60"></div>
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12" style={{ transform: "translateZ(30px)" }}>
+            <div className="max-w-xl space-y-6">
+              <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30">
+                <span className="material-symbols-outlined text-sm">hub</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Advanced Infrastructure</span>
+              </div>
+              <h3 className="text-5xl font-black font-headline tracking-tighter leading-none">Lumina Logistics Command</h3>
+              <p className="text-lg opacity-80 font-body leading-relaxed">Experience the next generation of electoral supply chain intelligence. Real-time disruption monitoring and AI-driven distribution routing.</p>
+              <Link href="/lumina" className="inline-flex items-center gap-4 px-10 py-4 bg-white text-lumina-primary rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-slate-100 transition-all shadow-2xl">
+                Enter Command Center <span className="material-symbols-outlined text-sm">rocket_launch</span>
+              </Link>
+            </div>
+            <div className="w-full max-w-sm aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/20 relative group-hover:scale-105 transition-transform duration-500">
+               <Image 
+                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3H51JD6nZhwSznt3M3DLiKc1zP2M7E2p_vPvez3xpnIl8PgTLf4NT5m5OB2R_haPQG0rPaYXnSnOYNhrlGlAC6GC42CsUTg5iteEJgxatO_qinq0Y0OqQZ5izGlRpTI76d84o-6VBdHvvxuLzRlhKF_eGv42ezTc4O66y4i63gdzHxpDBFOl43L1vH9Zhgn5Fg08R3Qp3k-oeD4fQLxpl4wQCJY8hWBM21bC628n3j5Nfhei5i8C4PpaTM_mfugoCcjjzfozYfNE"
+                 alt="Lumina Cinematic View"
+                 fill
+                 className="object-cover opacity-90"
+               />
+            </div>
+          </div>
         </motion.div>
       </section>
 

@@ -106,8 +106,8 @@ export default function NewsIntelWidget() {
                {('error' in briefing) ? (
                  <div className="flex-1 flex flex-col items-center justify-center text-center p-4">
                     <span className="material-symbols-outlined text-4xl text-primary mb-4">settings_suggest</span>
-                    <h3 className="font-headline font-black text-on-background mb-2">{(briefing as any).error}</h3>
-                    <p className="text-xs text-on-surface-variant font-body mb-6">{(briefing as any).diagnostic}</p>
+                    <h3 className="font-headline font-black text-on-background mb-2">{(briefing as unknown).error}</h3>
+                    <p className="text-xs text-on-surface-variant font-body mb-6">{(briefing as unknown).diagnostic}</p>
                     <button 
                       onClick={() => setSelectedArticle(null)}
                       className="px-6 py-2 bg-surface-container-high rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-surface-container-highest transition-all"
@@ -136,7 +136,7 @@ export default function NewsIntelWidget() {
                    <div className="space-y-6">
                       <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
                          <h4 className="text-[10px] font-black text-primary uppercase tracking-widest mb-3">AI Synthesis</h4>
-                         <p className="text-lg font-body text-on-surface leading-relaxed italic">"{briefing.shortSummary}"</p>
+                         <p className="text-lg font-body text-on-surface leading-relaxed italic">&quot;{briefing.shortSummary}&quot;</p>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

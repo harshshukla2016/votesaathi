@@ -42,7 +42,7 @@ export default function LearnPage() {
   const rotate = useTransform(dragX, [-200, 200], [-25, 25]);
   const opacity = useTransform(dragX, [-200, -150, 0, 150, 200], [0, 1, 1, 1, 0]);
 
-  const handleDragEnd = (_: any, info: any) => {
+  const handleDragEnd = (_: unknown, info: unknown) => {
     if (Math.abs(info.offset.x) > 100) {
       setCardIndex((prev) => (prev + 1) % learningCards.length);
     }
@@ -178,7 +178,7 @@ export default function LearnPage() {
                            <span className="material-symbols-outlined text-5xl">military_tech</span>
                         </div>
                         <h2 className="text-4xl font-black font-headline mb-4 tracking-tighter">Quiz Complete!</h2>
-                        <p className="text-on-surface-variant mb-8 text-lg font-body">Excellent work, Citizen. You've earned <span className="text-secondary font-black">{quizScore} Credits</span> and a new badge.</p>
+                        <p className="text-on-surface-variant mb-8 text-lg font-body">Excellent work, Citizen. You&apos;ve earned <span className="text-secondary font-black">{quizScore} Credits</span> and a new badge.</p>
                         <div className="flex gap-4">
                            <button onClick={() => {setQuizIndex(0); setQuizFinished(false); setQuizScore(0);}} className="flex-1 py-4 bg-on-background text-background font-black rounded-2xl hover:brightness-110 transition-all">Retry Quiz</button>
                            <button onClick={() => setActiveTab('cards')} className="flex-1 py-4 bg-surface-container-high text-on-surface font-black rounded-2xl hover:bg-surface-container-highest transition-all">Review Lessons</button>

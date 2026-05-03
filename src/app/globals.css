@@ -57,6 +57,14 @@
   --color-surface-container-lowest: var(--color-surface-container-lowest);
   --color-on-tertiary-fixed-variant: var(--color-on-tertiary-fixed-variant);
   --color-on-secondary-fixed-variant: var(--color-on-secondary-fixed-variant);
+  
+  /* Lumina Specific Palette */
+  --color-lumina-primary: #0061a5;
+  --color-lumina-secondary: #206775;
+  --color-lumina-tertiary: #63539a;
+  --color-lumina-primary-container: #4da6ff;
+  --color-lumina-surface: #f7f9fd;
+  --color-lumina-outline: #707783;
 
   /* Animation */
   --animate-spin-slow: spin 20s linear infinite;
@@ -256,4 +264,12 @@ h1, h2, h3, h4, h5, h6 {
 
 @utility translate-z-20 {
   transform: translateZ(20px);
+}
+
+@utility route-glow {
+  filter: drop-shadow(0 0 8px rgba(77, 166, 255, 0.8));
+}
+
+@utility route-glow-warning {
+  filter: drop-shadow(0 0 8px rgba(255, 170, 0, 0.5));
 }

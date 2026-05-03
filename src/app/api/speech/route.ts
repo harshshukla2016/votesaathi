@@ -15,13 +15,13 @@ export async function POST(req: NextRequest) {
       const request = {
         audio: { content: audio },
         config: {
-          encoding: "WEBM_OPUS" as any,
+          encoding: "WEBM_OPUS" as unknown,
           sampleRateHertz: 48000,
           languageCode: languageCode,
         },
       };
 
-      const [response] = await speechClient.recognize(request as any);
+      const [response] = await speechClient.recognize(request as unknown);
       const transcription = response.results
         ?.map((result) => result.alternatives?.[0].transcript)
         .join("\n");
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ error: "Invalid request type or missing data" }, { status: 400 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Speech API Error:", error);
     if (error.message?.includes("Billing") || error.message?.includes("PRECONDITION")) {
       return NextResponse.json({ error: "BILLING_REQUIRED", details: "Google Cloud Billing must be enabled for neural voices." }, { status: 402 });

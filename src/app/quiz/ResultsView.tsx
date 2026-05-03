@@ -48,7 +48,7 @@ export default function ResultsView({ answers }: ResultsViewProps) {
             </div>
 
             <p className="text-lg text-on-surface-variant font-body leading-relaxed">
-              {info.description} Your priorities in economic stability and tech disruption strongly align with the {topBloc}'s 2025 platform.
+              {info.description} Your priorities in economic stability and tech disruption strongly align with the {topBloc}&apos;s 2025 platform.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">

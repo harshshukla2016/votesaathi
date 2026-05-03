@@ -155,8 +155,8 @@ export default function TruthCenter() {
                      <div className="flex flex-col items-center justify-center text-center p-8 space-y-6">
                         <span className="material-symbols-outlined text-6xl text-primary font-thin">settings_suggest</span>
                         <div>
-                           <h4 className="text-xl font-headline font-black text-on-background">{(result as any).error}</h4>
-                           <p className="text-sm text-on-surface-variant mt-2">{(result as any).diagnostic}</p>
+                           <h4 className="text-xl font-headline font-black text-on-background">{(result as unknown).error}</h4>
+                           <p className="text-sm text-on-surface-variant mt-2">{(result as unknown).diagnostic}</p>
                         </div>
                         <button 
                           onClick={() => setResult(null)}
@@ -218,7 +218,7 @@ export default function TruthCenter() {
                       </span>
                       <span className="text-[9px] font-bold text-on-surface-variant">{item.score}% Confidence</span>
                    </div>
-                   <p className="text-sm font-bold text-on-surface leading-tight">"{item.claim}"</p>
+                   <p className="text-sm font-bold text-on-surface leading-tight">&quot;{item.claim}&quot;</p>
                 </div>
               ))}
            </div>

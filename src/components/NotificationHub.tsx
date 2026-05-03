@@ -23,6 +23,7 @@ export default function NotificationHub() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+       
       setPermission(Notification.permission);
     }
 

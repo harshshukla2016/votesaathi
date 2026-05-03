@@ -1,4 +1,5 @@
 import * as admin from "firebase-admin";
+import * as fs from "fs";
 
 /**
  * FIREBASE ADMIN SDK (SERVER-SIDE ONLY)
@@ -14,8 +15,9 @@ if (!admin.apps.length) {
   try {
     if (serviceAccountPath) {
       // Initialize with Service Account Key
+      const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, 'utf8'));
       admin.initializeApp({
-        credential: admin.credential.cert(require(serviceAccountPath)),
+        credential: admin.credential.cert(serviceAccount),
       });
       console.log("🔒 Consulate Admin Mesh: Active (Credential Mode)");
     } else {
@@ -23,7 +25,7 @@ if (!admin.apps.length) {
       admin.initializeApp();
       console.log("🔒 Consulate Admin Mesh: Active (ADC Mode)");
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.warn("⚠️ Consulate Admin Initialization Warning:", error.message);
   }
 }
