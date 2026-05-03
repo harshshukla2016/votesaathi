@@ -18,6 +18,7 @@ const customJestConfig = {
     'src/services/**/*.ts',
     'src/components/VoterVerification.tsx',
     'src/components/CampaignTracker.tsx',
+    '!src/**/index.ts',
   ],
   coverageThresholds: {
     global: {

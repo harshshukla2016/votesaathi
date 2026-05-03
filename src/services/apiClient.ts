@@ -17,13 +17,15 @@ export async function fetchWithBackoff(url: string, options: RequestInit = {}, r
     const response = await fetch(url, options);
     if (!response.ok) {
       if (response.status >= 500 && retries > 0) {
-        throw new Error("Server Error - Retry");
+        const err = new Error("Server Error - Retry");
+        (err as any)._retryable = true;
+        throw err;
       }
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     return await response.json();
-  } catch (err) {
-    if (retries > 0) {
+  } catch (err: any) {
+    if (err._retryable && retries > 0) {
       await new Promise(resolve => setTimeout(resolve, backoff));
       return fetchWithBackoff(url, options, retries - 1, backoff * 2);
     }

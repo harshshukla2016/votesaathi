@@ -22,7 +22,7 @@ export default function Sidebar() {
   return (
     <>
       {/* DESKTOP SIDEBAR */}
-      <aside className="hidden lg:flex flex-col h-screen fixed left-0 top-0 z-40 bg-surface w-20 hover:w-72 transition-all duration-500 border-r border-outline-variant/10 overflow-y-auto group scrollbar-hide shadow-[20px_0_40px_rgba(0,0,0,0.05)] dark:shadow-[20px_0_40px_rgba(0,0,0,0.4)]">
+      <aside aria-label="Main navigation sidebar" className="hidden lg:flex flex-col h-screen fixed left-0 top-0 z-40 bg-surface w-20 hover:w-72 transition-all duration-500 border-r border-outline-variant/10 overflow-y-auto group scrollbar-hide shadow-[20px_0_40px_rgba(0,0,0,0.05)] dark:shadow-[20px_0_40px_rgba(0,0,0,0.4)]">
         <div className="p-5 flex items-center gap-4 overflow-hidden border-b border-surface-container-high h-20 shrink-0">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center shadow-lg shadow-primary/20 shrink-0">
             <span className="material-symbols-outlined text-on-primary font-bold">how_to_vote</span>
@@ -33,7 +33,7 @@ export default function Sidebar() {
           </div>
         </div>
         
-        <nav className="flex-1 py-6 flex flex-col gap-1">
+        <nav aria-label="Primary navigation" className="flex-1 py-6 flex flex-col gap-1">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -72,7 +72,7 @@ export default function Sidebar() {
       </aside>
 
       {/* MOBILE BOTTOM NAVIGATION */}
-      <nav className="lg:hidden fixed bottom-0 left-0 w-full h-16 bg-surface/90 backdrop-blur-xl border-t border-outline-variant/10 z-[100] flex items-center justify-around px-2 pb-safe shadow-[0_-10px_40px_rgba(0,0,0,0.1)] overflow-x-auto no-scrollbar">
+      <nav aria-label="Mobile navigation" className="lg:hidden fixed bottom-0 left-0 w-full h-16 bg-surface/90 backdrop-blur-xl border-t border-outline-variant/10 z-[100] flex items-center justify-around px-2 pb-safe shadow-[0_-10px_40px_rgba(0,0,0,0.1)] overflow-x-auto no-scrollbar">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
