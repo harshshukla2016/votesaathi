@@ -1,75 +1,46 @@
-# VoteSaathi: Verification & Testing Manifest 🧪🛡️
+# Testing Documentation
 
-This document outlines the rigorous testing procedures applied to the **VoteSaathi Digital Consulate** to ensure 100% stability, security, and accessibility.
+## Overview
 
----
+VoteSaathi uses **Jest 30** with **React Testing Library** for comprehensive testing across all layers of the application.
 
-## 🏗️ 1. Automated Quality Checks
+## Test Suites
 
-### 🛡️ Type Stability (Strict Mode)
-- **Command**: `npx tsc --noEmit`
-- **Result**: ✅ **PASSED**
-- **Coverage**: 100% of the codebase is under TypeScript Strict Mode.
-- **Goal**: Zero runtime `null` or `undefined` crashes across all core components.
+| Suite | Files | Purpose |
+|-------|-------|---------|
+| Unit Tests | `__tests__/utils/*.test.ts` | Pure function validation (formatters, validation, constants) |
+| Hook Tests | `__tests__/hooks/*.test.ts` | Custom React hooks (useDebounce, useLocalStorage) |
+| Service Tests | `__tests__/services/*.test.ts` | API client, Gemini service with mocked fetch |
+| Component Tests | `__tests__/components/*.test.tsx` | UI rendering, state transitions, user interactions |
+| Workflow Tests | `__tests__/workflows/*.test.tsx` | End-to-end user journey simulations |
+| Security Tests | `__tests__/security/*.test.ts` | XSS prevention, SQL injection blocking, env var auditing |
+| Accessibility Tests | `__tests__/accessibility/*.test.tsx` | WCAG 2.1 compliance, keyboard navigation, ARIA |
 
-### 🧩 Linting (Next.js Core)
-- **Command**: `npm run lint`
-- **Result**: ✅ **PASSED**
-- **Goal**: Adherence to production-grade Next.js and React patterns.
+## Running Tests
 
----
+```bash
+# All tests
+npm test
 
-## ♿ 2. Accessibility & Inclusion (A11y)
+# With coverage
+npm run test:coverage
 
-### 📊 Lighthouse Audit
-- **Metric**: Accessibility
-- **Score**: ✅ **100/100**
-- **Key Features**:
-  - **Skip to Content**: Fast-bypass for keyboard users.
-  - **Aria-Labels**: Descriptive labels for all dynamic UI elements (Theme toggles, Chat triggers).
-  - **Semantic HTML**: Proper hierarchy of `h1`-`h6`, `nav`, and `main` tags.
-  - **Color Contrast**: 4.5:1 ratio maintained across all themes (Light/Dark).
+# Single file
+npx jest __tests__/utils/validation.test.ts
+```
 
----
+## Coverage Thresholds
 
-## 🔒 3. Security & Resilience Testing
+Enforced in `jest.config.js`:
 
-### 🛡️ Safe Mode Fallbacks
-- **Scenario**: API Key Missing or Service Offline.
-- **Test**: Remove `GOOGLE_GENERATIVE_AI_API_KEY`.
-- **Result**: ✅ **PASSED** (System enters 'Safe Mode' diagnostic state instead of crashing).
+- **Branches**: ≥ 80%
+- **Functions**: ≥ 80%
+- **Lines**: ≥ 90%
+- **Statements**: ≥ 90%
 
-### 🚦 Rate Limiting
-- **Scenario**: API Abuse/Spam.
-- **Test**: Rapidly fire 5+ messages in < 2 seconds.
-- **Result**: ✅ **PASSED** (HTTP 429 received, protecting compute resources).
+## Current Results
 
-### 🤫 Secret Protection
-- **Scenario**: Accidentally pushing credentials.
-- **Test**: `git status` check for `service-account.json` and `.env.local`.
-- **Result**: ✅ **PASSED** (Strict `.gitignore` policy enforced).
-
----
-
-## 🧠 4. Intelligence Accuracy
-
-### 🛰️ Vertex AI Handshake
-- **Test**: Diagnostic ping to Vertex AI project `votesaathi-e8265`.
-- **Result**: ✅ **PASSED** (Neutral, data-driven response received).
-
-### 🔍 Verified Search
-- **Test**: Search query restricted to `.gov.in`.
-- **Result**: ✅ **PASSED** (Zero results from non-official domains).
-
----
-
-## 📱 5. Performance & Efficiency
-
-### 📦 Bundle Optimization
-- **Goal**: Repository Size < 1 MB.
-- **Current Size**: ✅ **~790 KB**.
-- **Technique**: Externalized large binary assets and optimized font loading.
-
----
-
-*Verified by VoteSaathi Quality Mesh 🇮🇳🛡️*
+- **13 test suites** — all passing
+- **68 individual tests** — all passing
+- **99.66% statement coverage**
+- **96.25% branch coverage**
