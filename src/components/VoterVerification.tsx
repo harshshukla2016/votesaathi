@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface VoterData {
@@ -18,7 +18,11 @@ export default function VoterVerification() {
   const [voterData, setVoterData] = useState<VoterData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleVerify = async (e: React.FormEvent) => {
+  /**
+   * Handles the secure API Setu verification call.
+   * Wrapped in useCallback to prevent unnecessary re-renders of the form.
+   */
+  const handleVerify = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     if (!epic.trim()) return;
 
@@ -47,7 +51,14 @@ export default function VoterVerification() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [epic]);
+
+  /**
+   * Memoizes the polling station string to optimize rendering.
+   */
+  const formattedPollingStation = useMemo(() => {
+    return voterData?.pollingStation || "N/A";
+  }, [voterData?.pollingStation]);
 
   return (
     <div className="bg-surface-container-low rounded-[2.5rem] p-8 border border-outline-variant/10 shadow-2xl relative overflow-hidden group">
@@ -126,7 +137,7 @@ export default function VoterVerification() {
                       </div>
                       <div>
                          <h4 className="font-headline font-black text-on-background">Designated Polling Station</h4>
-                         <p className="text-xs text-on-surface-variant font-medium">{voterData.pollingStation}</p>
+                         <p className="text-xs text-on-surface-variant font-medium">{formattedPollingStation}</p>
                       </div>
                    </div>
                    <button 

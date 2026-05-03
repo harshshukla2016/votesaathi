@@ -16,7 +16,10 @@ const customJestConfig = {
   coverageProvider: 'v8',
   collectCoverageFrom: [
     'src/components/CampaignTracker.tsx',
-    'src/components/VoterVerification.tsx'
+    'src/components/VoterVerification.tsx',
+    'src/utils/validation.ts',
+    'src/hooks/useDebounce.ts',
+    'src/services/apiClient.ts'
   ],
 };
 

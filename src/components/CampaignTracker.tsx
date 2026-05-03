@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 
 interface CampaignData {
   parties: { name: string; symbol: string; candidate: string; majorPromise: string }[];
@@ -13,28 +13,39 @@ export default function CampaignTracker({ scope, stateName }: { scope: string, s
   const [data, setData] = useState<CampaignData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchCampaignData = async () => {
-      setIsLoading(true);
-      try {
-        const res = await fetch("/api/gemini", {
-          method: "POST",
-          body: JSON.stringify({ 
-            type: "campaign_intel", 
-            query: `Provide a detailed briefing on the 2024 election campaign ${scope === "State" ? `for the state of ${stateName}` : "at the National level"} in India.`
-          }),
-        });
-        const result = await res.json();
-        setData(result);
-      } catch (err) {
-        console.error("Failed to fetch campaign data:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchCampaignData();
+  /**
+   * Memoizes the generated query to avoid redundant string parsing.
+   */
+  const queryToFetch = useMemo(() => {
+    return `Provide a detailed briefing on the 2024 election campaign ${scope === "State" ? `for the state of ${stateName}` : "at the National level"} in India.`;
   }, [scope, stateName]);
+
+  /**
+   * Fetches the campaign data.
+   * Wrapped in useCallback to guarantee referential stability for useEffect.
+   */
+  const fetchCampaignData = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch("/api/gemini", {
+        method: "POST",
+        body: JSON.stringify({ 
+          type: "campaign_intel", 
+          query: queryToFetch
+        }),
+      });
+      const result = await res.json();
+      setData(result);
+    } catch (err) {
+      console.error("Failed to fetch campaign data:", err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [queryToFetch]);
+
+  useEffect(() => {
+    fetchCampaignData();
+  }, [fetchCampaignData]);
 
   if (isLoading || !data) return (
     <div className="h-64 flex flex-col items-center justify-center gap-4 bg-surface-container-low rounded-[2.5rem] border border-outline-variant/10 animate-pulse">
