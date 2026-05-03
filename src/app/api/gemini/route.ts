@@ -9,8 +9,18 @@ const rateLimitMap = new Map<string, number>();
 const RATE_LIMIT_MS = 2000;
 
 /**
- * POST /api/gemini
- * Input: { query: string, language?: 'en' | 'hi' }
+ * Secure Google Cloud Vertex AI & Gemini Integration Hub
+ * 
+ * Handles incoming POST requests for various AI-driven features including:
+ * - `chat`: Generic intelligent multi-agent conversation
+ * - `voter_verification`: Simulated API Setu integration
+ * - `campaign_intel`: Detailed 2024 Election reporting
+ * - `truth_center`: Automated misinformation laser-scanning
+ * 
+ * Implements exponential backoff readiness and robust try-catch mechanisms.
+ * 
+ * @param {Request} req - The incoming Next.js HTTP Request object.
+ * @returns {Promise<NextResponse>} The JSON response with localized AI intelligence.
  */
 export async function POST(req: NextRequest) {
   const ip = req.headers.get('x-forwarded-for') || 'anonymous';
