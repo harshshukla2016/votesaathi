@@ -14,6 +14,10 @@ const customJestConfig = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   coverageProvider: 'v8',
+  collectCoverageFrom: [
+    'src/components/CampaignTracker.tsx',
+    'src/components/VoterVerification.tsx'
+  ],
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

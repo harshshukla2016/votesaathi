@@ -332,7 +332,7 @@ export default function Home() {
             src="/indian-democracy-bg.png"
             alt="Indian Democracy Heritage Background"
             fill
-            unoptimized
+            
             className="object-cover opacity-[0.15] mix-blend-luminosity grayscale-[30%] object-bottom"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D14] via-[#0B0D14]/90 to-transparent"></div>

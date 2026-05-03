@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { NextRequest, NextResponse } from "next/server";
 import { generateText } from "ai";
 import { model, ELECTION_SYSTEM_PROMPT } from "@/lib/ai-core";

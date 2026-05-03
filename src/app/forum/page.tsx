@@ -141,7 +141,7 @@ export default function CitizenForum() {
               <div className="flex items-center gap-3 px-4">
                  {user ? (
                    <>
-                     <Image src={user.photoURL || "/og-image.png"} alt="User profile" width={32} height={32} unoptimized className="w-8 h-8 rounded-full border border-primary/20" />
+                     <Image src={user.photoURL || "/og-image.png"} alt="User profile" width={32} height={32}  className="w-8 h-8 rounded-full border border-primary/20" />
                      <span className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Posting as {user.displayName}</span>
                    </>
                  ) : (
@@ -191,7 +191,7 @@ export default function CitizenForum() {
                       {/* Content Area */}
                       <div className="flex-1 p-8 space-y-6">
                          <div className="flex items-center gap-3">
-                            <Image src={thread.authorPhoto || `https://ui-avatars.com/api/?name=${thread.authorName}`} alt={`${thread.authorName} avatar`} width={24} height={24} unoptimized className="w-6 h-6 rounded-full opacity-60" />
+                            <Image src={thread.authorPhoto || `https://ui-avatars.com/api/?name=${thread.authorName}`} alt={`${thread.authorName} avatar`} width={24} height={24}  className="w-6 h-6 rounded-full opacity-60" />
                             <span className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">{thread.authorName}</span>
                             <span className="text-[10px] opacity-40">•</span>
                             <span className="text-[10px] font-bold text-on-surface-variant opacity-40">Just now</span>

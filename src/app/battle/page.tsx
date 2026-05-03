@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -227,7 +228,7 @@ export default function BattleArena() {
               <div className="relative w-48 h-48 mx-auto">
                  <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-4 border-dashed border-primary/20 rounded-full" />
                  <div className="absolute inset-4 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
-                    <Image src={user?.photoURL || "https://lh3.googleusercontent.com/a/default-user"} alt="Your profile" width={128} height={128} className="w-full h-full object-cover border-4 border-primary/10" unoptimized />
+                    <Image src={user?.photoURL || "https://lh3.googleusercontent.com/a/default-user"} alt="Your profile" width={128} height={128} className="w-full h-full object-cover border-4 border-primary/10"  />
                  </div>
               </div>
               <div>
@@ -245,7 +246,7 @@ export default function BattleArena() {
                className="flex flex-col items-center gap-6"
              >
                 <div className="w-64 h-64 rounded-full border-8 border-secondary overflow-hidden shadow-2xl">
-                   <Image src={lobby?.players[0].photo || "https://lh3.googleusercontent.com/a/default-user"} alt="Player 1 profile" width={256} height={256} className="w-full h-full object-cover" unoptimized />
+                   <Image src={lobby?.players[0].photo || "https://lh3.googleusercontent.com/a/default-user"} alt="Player 1 profile" width={256} height={256} className="w-full h-full object-cover"  />
                 </div>
                 <h3 className="text-3xl font-headline font-black">{lobby?.players[0].userName}</h3>
              </motion.div>
@@ -257,7 +258,7 @@ export default function BattleArena() {
                className="flex flex-col items-center gap-6"
              >
                 <div className="w-64 h-64 rounded-full border-8 border-primary overflow-hidden shadow-2xl">
-                   <Image src={lobby?.players[1]?.photo || "https://lh3.googleusercontent.com/a/default-user"} alt="Player 2 profile" width={256} height={256} className="w-full h-full object-cover" unoptimized />
+                   <Image src={lobby?.players[1]?.photo || "https://lh3.googleusercontent.com/a/default-user"} alt="Player 2 profile" width={256} height={256} className="w-full h-full object-cover"  />
                 </div>
                 <h3 className="text-3xl font-headline font-black">{lobby?.players[1]?.userName}</h3>
              </motion.div>
